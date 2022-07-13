@@ -1,0 +1,8 @@
+world:
+  spawn: []
+
+physics:
+  double-jump:
+    enabled: true
+    velocity-strength: 1.5
+    particles: 
