@@ -10,7 +10,6 @@ public class PlayerDoubleJumpListener implements Listener {
     @EventHandler
     public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
-
-
+        
     }
 }

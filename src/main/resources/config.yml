@@ -1,8 +1,18 @@
+system:
+  prefix: '&a&lElectroHub &7» '
+
 world:
-  spawn: []
+  spawn-point: []
 
 physics:
   double-jump:
     enabled: true
     velocity-strength: 1.5
-    particles: 
+    particle: SPELL_WITCH
+
+sound:
+  commands:
+    rejected: BLOCK_NOTE_BLOCK_BASS 0
+    allowed: BLOCK_NOTE_BLOCK_PLING 2
+  double-jump: ENTITY_FIREWORK_ROCKET_LAUNCH 1
+  
