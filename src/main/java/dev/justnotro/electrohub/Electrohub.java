@@ -12,6 +12,7 @@ import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -48,7 +49,6 @@ public final class Electrohub extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-
         Bukkit.getConsoleSender().sendMessage(Message.fixColor("&cElectroHub is now disabled!"));
     }
 

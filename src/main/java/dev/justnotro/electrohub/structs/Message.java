@@ -19,6 +19,7 @@ public enum Message {
     private final String defaultMessage;
 
     public static String fixColor(String message) {
+
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 
