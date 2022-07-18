@@ -1,19 +1,13 @@
 package dev.justnotro.electrohub;
 
-import dev.justnotro.electrohub.listeners.PlayerJoinListener;
-import dev.justnotro.electrohub.listeners.PlayerQuitListener;
+import dev.justnotro.electrohub.commands.FlyCommand;
 import dev.justnotro.electrohub.structs.Message;
 import dev.justnotro.electrohub.utils.Config;
-import dev.justnotro.electrohub.utils.ItemBuilder;
 import dev.justnotro.electrohub.utils.ListenerAutoRegistration;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
-import org.bukkit.Particle;
-import org.bukkit.Sound;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Electrohub extends JavaPlugin {
@@ -33,8 +27,7 @@ public final class Electrohub extends JavaPlugin {
         setLanguageConfig(new Config("language", null, false));
         new ListenerAutoRegistration(this, false).register("dev.justnotro.electrohub.listeners");
 
-        Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(), this);
-        Bukkit.getPluginManager().registerEvents(new PlayerQuitListener(), this);
+        getCommand("fly").setExecutor(new FlyCommand());
         Bukkit.getConsoleSender().sendMessage(Message.fixColor("&aElectroHub is now enabled!"));
     }
 

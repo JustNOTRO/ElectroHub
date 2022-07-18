@@ -4,3 +4,7 @@ main: dev.justnotro.electrohub.Electrohub
 api-version: 1.19
 authors: [ JustNOTRO, OfirTIM ]
 description: Electrifying Hub Experience 
+
+commands:
+  fly:
+    description: Set a player flight ability.

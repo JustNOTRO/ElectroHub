@@ -10,9 +10,15 @@ physics:
     velocity-strength: 1.5
     particle: SPELL_WITCH
 
+launch-pad:
+  pad:
+    enabled: true
+    velocity-strength: 1
+
 sound:
   commands:
-    rejected: BLOCK_NOTE_BLOCK_BASS 0
-    allowed: BLOCK_NOTE_BLOCK_PLING 2
-  double-jump: ENTITY_FIREWORK_ROCKET_LAUNCH 1
+    rejected: BLOCK_NOTE_BLOCK_BASS
+    allowed: BLOCK_NOTE_BLOCK_PLING
+    double-jump: ENTITY_GENERIC_EXPLODE
+    launch-pad: ENTITY_EGG_THROW
   
