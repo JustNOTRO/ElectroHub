@@ -16,7 +16,7 @@ public class FlyCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
         if (!(sender instanceof Player player)) {
-            sender.sendMessage(Electrohub.getInstance().getPrefix() + Message.fixColor("&cOnly a player can execute that command&7."));
+            sender.sendMessage(Electrohub.getInstance().getPrefix() + "§cOnly a player can execute that command§7.");
             return true;
         }
 
