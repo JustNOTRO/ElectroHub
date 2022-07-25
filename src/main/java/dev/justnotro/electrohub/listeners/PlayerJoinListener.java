@@ -14,5 +14,7 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
 
         event.setJoinMessage(Message.fixColor("&7[&2+&7] " + player.getDisplayName()));
+
+        player.setAllowFlight(true);
     }
 }

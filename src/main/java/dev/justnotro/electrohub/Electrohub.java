@@ -26,8 +26,11 @@ public final class Electrohub extends JavaPlugin {
         instance = this;
         setLanguageConfig(new Config("language", null, false));
         new ListenerAutoRegistration(this, false).register("dev.justnotro.electrohub.listeners");
+        if (!new CommandAutoRegistration(this, false).register("dev.justnotro.electrohub.commands")) {
+            this.getLogger().warning("Couldn't load all commands properly! please check any exceptions that pop up on console!");
+            getPluginLoader().disablePlugin(this);
+        } else Bukkit.getConsoleSender().sendMessage("&a&lSuccessfully loaded all commands from default sources!");
 
-        getCommand("fly").setExecutor(new FlyCommand());
         Bukkit.getConsoleSender().sendMessage(Message.fixColor("&aElectroHub is now enabled!"));
     }
 
