@@ -10,9 +10,7 @@ public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onPlayerQuitEvent(PlayerQuitEvent event) {
-
         Player player = event.getPlayer();
-
-        event.setQuitMessage(Message.fixColor("&7[&c-&7] " + player.getDisplayName()));
+        event.setQuitMessage(Message.fixColor("&7[&c-&7] ") + player.getDisplayName());
     }
 }

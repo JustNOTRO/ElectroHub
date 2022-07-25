@@ -2,17 +2,16 @@ package dev.justnotro.electrohub.listeners;
 
 import dev.justnotro.electrohub.Electrohub;
 import org.bukkit.GameMode;
-import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.util.Vector;
+
 
 public class PlayerDoubleJumpListener implements Listener {
 
@@ -22,17 +21,28 @@ public class PlayerDoubleJumpListener implements Listener {
         ConfigurationSection soundSection = Electrohub.getInstance().getConfig().getConfigurationSection("sound.commands");
 
         Player player = event.getPlayer();
-        Vector vector = player.getLocation().getDirection().multiply(1).setY(doubleJump.getInt("velocity-strength"));
-
+        Vector vector = player.getLocation().getDirection().multiply(1.5).setY(doubleJump.getInt("velocity-strength"));
 
         if (!doubleJump.getBoolean("enabled")) return;
         if (player.getGameMode().equals(GameMode.CREATIVE) || player.getGameMode().equals(GameMode.SPECTATOR)) return;
+        if (player.hasMetadata("doubleJump")) return;
 
         event.setCancelled(true);
-        if (player.getLocation().getBlock().getType().equals(Material.AIR)) return;
+        player.setAllowFlight(false);
+        player.setMetadata("doubleJump", Electrohub.getInstance().doubleJump(true));
 
         player.setVelocity(vector);
         player.spawnParticle(Particle.valueOf(doubleJump.getString("particle")), player.getLocation(), 1);
         player.playSound(player.getLocation(), Sound.valueOf(soundSection.getString("double-jump")), 1, 1);
+    }
+    @EventHandler
+    public void onPlayerMoveEvent(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+
+        if (player.getGameMode().equals(GameMode.CREATIVE)) return;
+        if (player.isOnGround() || event.getTo().getBlock().isLiquid() && player.hasMetadata("doubleJump")) {
+            player.removeMetadata("doubleJump", Electrohub.getInstance());
+            player.setAllowFlight(true);
+        }
     }
 }
