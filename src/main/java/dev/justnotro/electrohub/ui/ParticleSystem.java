@@ -21,12 +21,14 @@ public record ParticleSystem (@Getter Player player) {
         gui.disableAllInteractions();
 
         gui.addItem(new GuiItem(new ItemBuilder(Material.WHITE_DYE, "§b§lARCTIC SCENT").create(), event -> {
+            System.out.println(false);
             Optional.of(event.getClick())
-                    .filter(ClickType::isLeftClick)
-                    .ifPresent(clickType -> {
-                        player.closeInventory();
-                        player.spawnParticle(Particle.SNOWBALL, player.getLocation(), 10, 0, 20, 0);
-                    });
+                .filter(ClickType::isLeftClick)
+                .ifPresent(clickType -> {
+                    System.out.println(true);
+                    player.closeInventory();
+                    player.spawnParticle(Particle.SNOWBALL, player.getLocation(), 10, 0, 20, 0);
+                });
         }));
         gui.open(player);
     }
