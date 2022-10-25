@@ -15,8 +15,6 @@ import java.util.Optional;
 public record ParticleSystem (@Getter Player player) {
 
     public void trailsGUI() {
-
-        System.out.println(true);
         Gui gui = new Gui(GuiType.DISPENSER, "§c§lTRAILS WIZARD");
         gui.disableAllInteractions();
 

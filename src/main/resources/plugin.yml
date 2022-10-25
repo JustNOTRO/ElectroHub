@@ -1,7 +1,6 @@
 name: Electrohub
 version: '${version}'
 main: dev.justnotro.electrohub.Electrohub
-api-version: 1.19
 authors: [ JustNOTRO, OfirTIM ]
 description: Electrifying Hub Experience 
 
