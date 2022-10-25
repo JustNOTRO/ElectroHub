@@ -8,7 +8,7 @@ physics:
   double-jump:
     enabled: true
     velocity-strength: 1.5
-    particle: SPELL_WITCH
+    particle: CLOUD
 
 launch-pad:
   pad:

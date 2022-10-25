@@ -1,6 +1,8 @@
 package dev.justnotro.electrohub.listeners;
 
 import dev.justnotro.electrohub.Electrohub;
+import dev.justnotro.electrohub.models.items.WizardItem;
+import dev.justnotro.electrohub.ui.ParticleSystem;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -27,5 +29,20 @@ public class PlayerInteractListener implements Listener {
 
         player.setVelocity(vector);
         player.playSound(player.getLocation(), Sound.valueOf(soundSection.getString("launch-pad")), 1, 1);
+    }
+
+    @EventHandler
+    public void onPlayerOpenGui(PlayerInteractEvent event) {
+        try {
+
+            if (event.getAction() == Action.PHYSICAL) return;
+            if (!event.getItem().equals(WizardItem.getItem())) return;
+
+            ParticleSystem particleSystem = new ParticleSystem(event.getPlayer());
+            particleSystem.trailsGUI();
+
+        } catch (NullPointerException ignored) {
+
+        }
     }
 }

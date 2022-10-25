@@ -32,17 +32,7 @@ public class PlayerDoubleJumpListener implements Listener {
         player.setMetadata("doubleJump", Electrohub.getInstance().doubleJump(true));
 
         player.setVelocity(vector);
-        player.spawnParticle(Particle.valueOf(doubleJump.getString("particle")), player.getLocation(), 1);
+        player.spawnParticle(Particle.valueOf(doubleJump.getString("particle")), player.getLocation(), 10);
         player.playSound(player.getLocation(), Sound.valueOf(soundSection.getString("double-jump")), 1, 1);
-    }
-    @EventHandler
-    public void onPlayerMoveEvent(PlayerMoveEvent event) {
-        Player player = event.getPlayer();
-
-        if (player.getGameMode().equals(GameMode.CREATIVE)) return;
-        if (player.isOnGround() || event.getTo().getBlock().isLiquid() && player.hasMetadata("doubleJump")) {
-            player.removeMetadata("doubleJump", Electrohub.getInstance());
-            player.setAllowFlight(true);
-        }
     }
 }

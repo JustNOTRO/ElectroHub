@@ -1,7 +1,6 @@
 package dev.justnotro.electrohub.commands;
 
 import dev.justnotro.electrohub.Electrohub;
-import dev.justnotro.electrohub.structs.Message;
 import dev.justnotro.electrohub.utils.CommandAutoRegistration;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,7 +20,7 @@ public class FlyCommand implements CommandExecutor {
         }
 
         if (!player.hasPermission("electrohub.fly")) {
-            player.sendMessage(Electrohub.getInstance().getPrefix() + Message.fixColor("§cYou don't have permission to execute that command§7."));
+            player.sendMessage(Electrohub.getInstance().getPrefix() + "§cYou don't have permission to execute this command§7.");
             return true;
         }
 
